@@ -1,0 +1,66 @@
++---------------------------------------+
+                     |         Visitor Enters AnT           |
+                     | (1-Bit Dither Editorial Landing Page) |
+                     +---------------------------------------+
+                                         |
+                                         v
+                     +---------------------------------------+
+                     |         Browse Lookbook / Catalog     |
+                     |  - Renders dynamic canvas shaders     |
+                     |  - Displays sharp grid layout          |
+                     +---------------------------------------+
+                                         |
+                                         v
+                     +---------------------------------------+
+                     |          Select Product Variant       |
+                     |  (Size, Color, Pre-order Indicator)   |
+                     +---------------------------------------+
+                                         |
+                                         v
+                     +---------------------------------------+
+                     |            Add to Cart                |
+                     |  (Cart stored in local state/context) |
+                     +---------------------------------------+
+                                         |
+                       +-----------------+-----------------+
+                       |                                   |
+                       v                                   v
+        +----------------------------+       +----------------------------+
+        |   Option A: Web Checkout   |       |  Option B: Direct Inquiry  |
+        +----------------------------+       +----------------------------+
+                       |                                   |
+                       v                                   v
+        +----------------------------+       +----------------------------+
+        | Enter Shipping Details &   |       | Click "Inquire via WhatsApp"|
+        | Initiate Paystack Checkout |       | (Triggers WhatsApp API with|
+        +----------------------------+       | cart details & SKU context)|
+                       |                                   |
+                       v                                   +-------------+
+        +----------------------------+                                   |
+        |    Process Payment via     |                                   |
+        |   Paystack / Flutterwave   |                                   |
+        +----------------------------+                                   |
+                       |                                                 |
+         +-------------+-------------+                                   |
+         |                           |                                   |
+         v                           v                                   |
+   [Payment Success]          [Payment Failed]                           |
+         |                           |                                   |
+         v                           v                                   |
++--------------------+      +--------------------+                       |
+| Execute Paystack   |      | Display Error &    |                       |
+| Webhook (Backend)  |      | Prompt Retry       |                       |
++--------------------+      +--------------------+                       |
+         |                                                               |
+         v                                                               |
++--------------------+                                                   |
+| - Create Order Row |                                                   |
+| - Decrement Stock  |                                                   |
+| - Return Success   |                                                   |
++--------------------+                                                   |
+         |                                                               |
+         v                                                               |
++------------------------------------------------------------------------+
+|                      Order Complete / Confirmation                     |
+|          (Displays order summary & triggers notification dispatch)    |
++------------------------------------------------------------------------+
