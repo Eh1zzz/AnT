@@ -1,0 +1,11 @@
+import { Router } from 'express';
+import { productController }  from '../controllers/productController';
+import { protect, adminOnly } from '../middleware/auth';
+const r = Router();
+r.get   ('/',            productController.list);
+r.get   ('/:slug',       productController.getBySlug);
+r.post  ('/',            protect, adminOnly, productController.create);
+r.post  ('/:id/variants',protect, adminOnly, productController.addVariant);
+r.patch ('/:id',         protect, adminOnly, productController.update);
+r.delete('/:id',         protect, adminOnly, productController.remove);
+export default r;

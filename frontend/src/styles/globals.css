@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root { --nav-h: 60px; }
+
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    @apply bg-black text-white font-grotesk antialiased;
+    overflow-x: hidden;
+    cursor: crosshair;
+  }
+
+  ::selection { @apply bg-white text-black; }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { @apply bg-black; }
+  ::-webkit-scrollbar-thumb { @apply bg-white/20; }
+}
+
+@layer components {
+  /* ── Editorial grid border ── */
+  .border-ant  { @apply border border-white/15; }
+  .border-ant-t{ @apply border-t border-white/15; }
+  .border-ant-b{ @apply border-b border-white/15; }
+
+  /* ── Oversized editorial heading ── */
+  .heading-hero {
+    font-size: clamp(4.5rem, 14vw, 13rem);
+    line-height: 0.88;
+    letter-spacing: -0.03em;
+    @apply font-grotesk font-bold uppercase;
+  }
+  .heading-xl {
+    font-size: clamp(2.5rem, 6vw, 6rem);
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    @apply font-grotesk font-bold uppercase;
+  }
+  .heading-lg {
+    font-size: clamp(1.5rem, 3.5vw, 3.5rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    @apply font-grotesk font-semibold uppercase;
+  }
+
+  /* ── Tag / label ── */
+  .tag {
+    @apply font-mono text-[10px] tracking-[0.2em] uppercase text-white/50;
+  }
+
+  /* ── Ghost button ── */
+  .btn-ghost {
+    @apply border border-white/20 text-white text-xs font-mono tracking-widest uppercase
+           px-6 py-3 hover:bg-white hover:text-black transition-colors duration-200;
+  }
+  .btn-solid {
+    @apply bg-white text-black text-xs font-mono tracking-widest uppercase
+           px-6 py-3 hover:bg-white/85 transition-colors duration-200;
+  }
+
+  /* ── Dither canvas wrapper ── */
+  .dither-wrap {
+    @apply relative overflow-hidden bg-zinc-950;
+    canvas { @apply w-full h-full object-cover block; }
+  }
+
+  /* ── Cart drawer backdrop ── */
+  .drawer-backdrop {
+    @apply fixed inset-0 bg-black/60 backdrop-blur-sm z-40;
+  }
+
+  /* ── Form input ── */
+  .input-ant {
+    @apply w-full bg-transparent border-b border-white/20 text-white font-mono text-sm py-3
+           focus:outline-none focus:border-white placeholder:text-white/30 transition-colors;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .aspect-product { aspect-ratio: 3/4; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}

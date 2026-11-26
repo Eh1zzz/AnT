@@ -1,0 +1,10 @@
+import { Router } from 'express';
+import { orderController } from '../controllers/orderController';
+import { protect }         from '../middleware/auth';
+const r = Router();
+r.post  ('/webhook',           orderController.webhook);
+r.post  ('/initiate',          protect, orderController.initiate);
+r.get   ('/',                  protect, orderController.myOrders);
+r.get   ('/verify/:reference', protect, orderController.verify);
+r.get   ('/:id',               protect, orderController.getOne);
+export default r;
